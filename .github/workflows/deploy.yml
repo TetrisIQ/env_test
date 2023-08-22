@@ -13,10 +13,10 @@ jobs:
             id: branch_check
             run: |
                 echo "Running on branch ${{ github.ref }}"
-                if [ "${{ github.ref }}" = "refs/heads/master" ]; then
-                echo "::set-output name=env_name::Production"
+                if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+                echo "::set-output name=env_name::prd"
                 elif [ "${{ github.ref }}" = "refs/heads/develop" ]; then
-                echo "::set-output name=env_name::Test"
+                echo "::set-output name=env_name::dev"
                 else
                     echo "::set-output name=env_name::Features"
                 fi         
@@ -34,4 +34,5 @@ jobs:
 
         steps:
         - uses: actions/checkout@v3
-        - run: echo test
+        - run: echo $Greeting
+        
