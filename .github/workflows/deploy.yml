@@ -34,5 +34,5 @@ jobs:
 
         steps:
         - uses: actions/checkout@v3
-        - run: echo $Greeting
-        
+        - run: echo $Test
+        - run: echo ${{secrets.notsoSecure}}
