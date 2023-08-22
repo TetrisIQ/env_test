@@ -3,6 +3,8 @@ name: Deploy
 on:
     push:
       branches: [main]
+env:
+    Test: nope #Defined by env 
 
 jobs:
     env:
@@ -35,4 +37,5 @@ jobs:
         steps:
         - uses: actions/checkout@v3
         - run: env
+        - run: echo ${{env.Test}}
         - run: echo ${{secrets.notsoSecure}}
