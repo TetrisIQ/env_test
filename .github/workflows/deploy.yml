@@ -4,7 +4,7 @@ on:
     push:
       branches: [main]
 env:
-    Test: nope #Defined by env 
+    Test: ${{vars.TEST}}
 
 jobs:
     env:
@@ -38,4 +38,5 @@ jobs:
         - uses: actions/checkout@v3
         - run: env
         - run: echo ${{vars.TEST}}
+        - run: echo ${{env.Test}}
         - run: echo ${{secrets.notsoSecure}}
