@@ -33,7 +33,8 @@ jobs:
         name: Deploy to ${{ needs.env.outputs.env_name }}
         runs-on: ubuntu-latest
         needs: [env]
-        environment: ${{ needs.env.outputs.env_name }}
+        environment: 
+            name: ${{ needs.env.outputs.env_name }}
 
         steps:
         - uses: actions/checkout@v3
