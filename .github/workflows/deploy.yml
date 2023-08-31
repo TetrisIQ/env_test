@@ -42,3 +42,17 @@ jobs:
         - run: echo ${{vars.TEST}}
         - run: echo ${{env.Test}}
         - run: echo ${{secrets.notsoSecure}}
+
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            value: ["1", "2", "2"]
+        steps:
+          - uses: 'actions/checkout@v3'
+            with:
+              fetch-depth: 2
+          - name: check ${{ matrix.value }} folder
+            id: check_${{ matrix.value }}
+            run: |
+                echo "${{ matrix.value }}"
