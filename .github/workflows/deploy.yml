@@ -53,6 +53,6 @@ jobs:
             with:
               fetch-depth: 2
           - name: check ${{ matrix.value }} folder
-            id: check_${{ matrix.value }}
+            id: check
             run: |
                 echo "${{ matrix.value }}"
