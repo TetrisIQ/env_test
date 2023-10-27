@@ -89,3 +89,10 @@ jobs:
         with:
           name: securityHTML
           path: pr/${{ github.event.number }}/security
+      - name: Commit report
+        run: |
+          git config --global user.name 'TetrisIQ'
+          git config --global user.email '24246993+TetrisIQ@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
+    
