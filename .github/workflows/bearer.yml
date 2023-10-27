@@ -73,14 +73,14 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: botComment.id,
-                body: '👋 Thanks for reporting! UPDATE'
+                body: comment_body
               })
             } else {
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: '👋 Thanks for reporting!'
+                body: comment_body
               })
             }
   upload_html_to_page:
