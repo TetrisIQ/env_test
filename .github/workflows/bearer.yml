@@ -78,3 +78,13 @@ jobs:
                 body: '👋 Thanks for reporting!'
               })
             }
+  upload_html_to_page:
+    runs-on: ubuntu-latest
+    needs: generateHTML
+    steps:
+      - uses: actions/checkout@v4
+        ref: gh-pages
+      - uses: actions/download-artifact@v3
+        with:
+          name: securityHTML
+          path: pr/${{ github.event.number }}/security
