@@ -83,7 +83,7 @@ jobs:
     needs: generateHTML
     steps:
       - uses: actions/checkout@v4
-         with:
+        with:
           ref: gh-pages
       - uses: actions/download-artifact@v3
         with:
