@@ -64,7 +64,7 @@ jobs:
               return comment.user.type === 'Bot' && comment.body.includes('Thanks for reporting')
             })
 
-            const commentBody = "We found some Issues: See the report here: ${{ env.gh_pages_url }}/pr/${{ github.event.number }}/security/securityTest.html".replace('\'', '');
+            const commentBody = "We found some Issues: See the report here: ${{ env.gh_pages_url }}/pr/${{ github.event.number }}/security/securityTest.html".replaceAll('\'', '');
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
