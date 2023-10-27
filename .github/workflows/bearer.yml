@@ -64,10 +64,7 @@ jobs:
               return comment.user.type === 'Bot' && comment.body.includes('We found some Issues')
             })
 
-            const commentBody = `
-                  \# \![](https://avatars.githubusercontent.com/u/36886676?s=48&v=4) Bearer Report 
-                  We found some issues in your `code`: 
-                  Take a look at the report here: ${{ env.gh_pages_url }}pr/${{ github.event.number }}/security/securityTest.html`
+            const commentBody = "# \![](https://avatars.githubusercontent.com/u/36886676?s=48&v=4) Bearer Report\nWe found some issues in your `code`:\nTake a look at the report here: ${{ env.gh_pages_url }}pr/${{ github.event.number }}/security/securityTest.html";
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
