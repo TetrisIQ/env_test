@@ -24,7 +24,7 @@ jobs:
   generateHTML:
     runs-on: ubuntu-latest
     needs: check
-    if: ${{ needs.check.output.security_finding == 'true' }}
+    if: ${{ needs.check.outputs.security_finding == 'true' }}
     steps:
       - uses: actions/checkout@v4
       - name: Run Report
@@ -41,7 +41,7 @@ jobs:
   comment_to_PR:
     runs-on: ubuntu-latest
     needs: check
-    if: ${{ needs.check.output.security_finding == 'true' }}
+    if: ${{ needs.check.outputs.security_finding == 'true' }}
     steps:
       - uses: actions/github-script@v6
         with:
