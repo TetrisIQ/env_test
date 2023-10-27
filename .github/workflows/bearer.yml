@@ -4,7 +4,7 @@ on:
   pull_request:
   
 env: 
-  gh_pages_url: https://tetrisiq.github.io/env_test
+  gh_pages_url: https://tetrisiq.github.io/env_test/
 
 jobs:
   check:
@@ -61,10 +61,10 @@ jobs:
               issue_number: context.issue.number,
             })
             const botComment = comments.find(comment => {
-              return comment.user.type === 'Bot' && comment.body.includes('Thanks for reporting')
+              return comment.user.type === 'Bot' && comment.body.includes('We found some Issues')
             })
 
-            const commentBody = "We found some Issues: See the report here: ${{ env.gh_pages_url }}/pr/${{ github.event.number }}/security/securityTest.html".replaceAll('\'', '');
+            const commentBody = "We found some Issues: See the report here: ${{ env.gh_pages_url }}pr/${{ github.event.number }}/security/securityTest.html";
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
