@@ -64,8 +64,7 @@ jobs:
               return comment.user.type === 'Bot' && comment.body.includes('Thanks for reporting')
             })
 
-            # https://tetrisiq.github.io/env_test/pr/51/security/securityTest.html
-            const comment_body = We found some Issues: See the report here: ${{ env.gh_pages_url }}/pr/${{ github.event.number }}/security/securityTest.html
+            const commentBody = We found some Issues: See the report here: ${{ env.gh_pages_url }}/pr/${{ github.event.number }}/security/securityTest.html
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
@@ -73,14 +72,14 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: botComment.id,
-                body: comment_body
+                body: commentBody
               })
             } else {
               github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: comment_body
+                body: commentBody
               })
             }
   upload_html_to_page:
