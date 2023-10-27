@@ -3,6 +3,8 @@ name: Bearer
 on:
   pull_request:
   
+env: 
+  gh_pages_url: https://tetrisiq.github.io/env_test/  
 
 jobs:
   check:
@@ -61,6 +63,9 @@ jobs:
             const botComment = comments.find(comment => {
               return comment.user.type === 'Bot' && comment.body.includes('Thanks for reporting')
             })
+
+            # https://tetrisiq.github.io/env_test/pr/51/security/securityTest.html
+            const comment_body = We found some Issues: See the report here: ${{ env.gh_pages_url }}/pr/${{ github.event.number }}/security/securityTest.html
 
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
