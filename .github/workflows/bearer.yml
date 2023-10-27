@@ -16,7 +16,7 @@ jobs:
           format: json
           output: securityTest.json
           exit-code: 0
-      - run: ls
+      - run: cat securityTest.json
       - run: echo security_finding=$(cat securityTest.json | jq '. != {}')  >> $GITHUB_OUTPUT
 
     outputs:
