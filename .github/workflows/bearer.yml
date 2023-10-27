@@ -65,7 +65,7 @@ jobs:
               issue_number: context.issue.number,
             })
             const botComment = comments.find(comment => {
-              return comment.user.type === 'Bot' && comment.body.includes('We found some Issues')
+              return comment.user.type === 'Bot' && comment.body.includes('https://avatars.githubusercontent.com/u/36886676?s=48&v=4')
             })
 
             const commentBody = "# \![](https://avatars.githubusercontent.com/u/36886676?s=48&v=4) Bearer Report\nWe found some issues in your `code`:\nTake a look at the report here: ${{ env.gh_pages_url }}pr/${{ github.event.number }}/security/securityTest.html";
