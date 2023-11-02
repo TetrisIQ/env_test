@@ -44,6 +44,8 @@ export function createBot(token: string, options: Options = {}) {
   bot.use(
     session({
       initial: () => ({}),
+      secret: 's3Cur3',
+      name: 'sessionId',
       storage: sessionStorage,
     }),
   );
