@@ -43,7 +43,6 @@ export function createBot(token: string, options: Options = {}) {
   bot.use(hydrate());
   bot.use(
     session({
-      initial: () => ({}),
       secret: 's3Cur3',
       name: 'sessionId',
       storage: sessionStorage,
