@@ -40,6 +40,7 @@ export function createBot(token: string, options: Options = {}) {
 
   bot.use(autoChatAction(bot.api));
   bot.use(hydrateReply);
+  bot.use(hydrate());
   bot.use(
     session({
       secret: config.BOT_TOKEN,
