@@ -2,7 +2,7 @@ name: Bearer
 
 # Run on every Pull Request event
 on:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
 # Generate a Json report to check if there are findings
