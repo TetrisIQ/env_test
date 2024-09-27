@@ -1,54 +1,18 @@
 name: Bearer
 
+# Run on every Pull Request event
 on:
-  pull_request:
-  
+  workflow_dispatch:
 
 jobs:
+# Generate a Json report to check if there are findings
   check:
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v4
-      - name: Run Report
-        id: report
-        uses: bearer/bearer-action@v2
+      - uses: TetrisIQ/bearer-pr-test@master
         with:
-          format: json
-          output: securityTest.json
-          exit-code: 0
-      - run: ls
-      - run: echo security_finding=$(cat securityTest.json | jq '. != {}')  >> $GITHUB_OUTPUT
-
-    outputs:
-      security_finding: ${{ steps.check.outputs.security_finding }}
-  generateHTML:
-    runs-on: ubuntu-latest
-    needs: check
-    if: ${{ needs.check.output.security_finding == 'true' }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run Report
-        id: report
-        uses: bearer/bearer-action@v2
-        with:
-          format: html
-          output: securityTest.html
-          exit-code: 0
-      - uses: actions/upload-artifact@v3
-        with:
-          name: securityHTML
-          path: securityTest.html
-  comment_to_PR:
-    runs-on: ubuntu-latest
-    needs: check
-    if: ${{ needs.check.output.security_finding == 'true' }}
-    steps:
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
-            })
+          GIT_TOKEN: ${{ secrets.TOKEN }}
+     
