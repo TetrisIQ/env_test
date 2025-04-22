@@ -17,7 +17,7 @@ export const createServer = async (bot: Bot) => {
     } else {
       logger.error(error);
 
-      await response.status(500).send({ error: "Oops! Something went wrong." });
+      await response.status(500).send({ error: "Oops! Something went wrong. :)" });
     }
   });
 
